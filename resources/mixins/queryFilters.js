@@ -11,6 +11,7 @@ export default {
         return '';
       });
       this.filters = updatedFilters;
+      this.filterData();
     },
     updateQuery() {
       const query = {};

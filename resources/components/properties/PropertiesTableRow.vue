@@ -2,7 +2,7 @@
   <tr class="bg-cyan-500 hover:bg-green-50">
     <td class="px-1 py-2"> #{{ property.id }} </td>
     <td class="px-1 py-2"> {{ propertyUser }} </td>
-    <td class="px-1 py-2"> {{ propertyType }} </td>
+    <td class="px-1 py-2"> {{ propertyType | capitalize }} </td>
     <td class="px-1 py-2"> {{ property.name }} </td>
     <td class="px-1 py-2"> {{ getTimeFormat(property.rentedFrom) }} </td>
     <td class="px-1 py-2"> {{ getTimeFormat(property.rentedTo) }} </td>

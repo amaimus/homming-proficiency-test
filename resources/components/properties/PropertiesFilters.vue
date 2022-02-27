@@ -66,10 +66,6 @@ export default {
     CustomSelect,
   },
   props: {
-    users: {
-      type: Array,
-      default: () => [],
-    },
     propertyTypes: {
       type: Array,
       default: () => [],

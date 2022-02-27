@@ -1,6 +1,6 @@
 export default {
   methods: {
-    filterProperties() {
+    filterData() {
       let currentProperties = [...this.properties];
       const filtersKeys = Object.keys(this.filters);
       filtersKeys.map((filterKey) => {

@@ -32,7 +32,7 @@
           :key=key
           :value="option.id"
         >
-          {{ option.name }}
+          {{ option.name | capitalize}}
         </option>
       </select>
       <div
