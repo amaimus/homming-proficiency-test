@@ -25,7 +25,24 @@ export default {
         const filterValue = this.filters.name.toLowerCase();
         return name.includes(filterValue);
       }
+      if (filterKey === 'rentedFrom' || filterKey === 'rentedTo') {
+        const propertyDate = this.getTimeFormat(new Date(property[filterKey]));
+        const filterDate = this.getTimeFormat(new Date(this.filters[filterKey]));
+        return propertyDate === filterDate;
+      }
+      if (filterKey === 'availability') {
+        const { rentedTo } = property;
+        const isAvailable = rentedTo === null || rentedTo < new Date();
+        return this.filters.availability === '1'
+          ? isAvailable
+          : !isAvailable;
+      }
       return property[filterKey] === +this.filters[filterKey];
+    },
+    getTimeFormat(timeStamp) {
+      return timeStamp
+        ? new Intl.DateTimeFormat('es-ES').format(timeStamp)
+        : '-';
     },
   },
 };

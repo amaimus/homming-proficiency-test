@@ -40,6 +40,8 @@ export default {
       userName: null,
       typeId: null,
       name: null,
+      rentedFrom: null,
+      rentedTo: null,
       availability: null,
     },
     currentProperties: [],

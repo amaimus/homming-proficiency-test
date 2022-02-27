@@ -7,11 +7,7 @@
     <td class="px-1 py-2"> {{ getTimeFormat(property.rentedFrom) }} </td>
     <td class="px-1 py-2"> {{ getTimeFormat(property.rentedTo) }} </td>
     <td class="px-1 py-2">
-      <span
-        :class="[
-        'font-bold',
-        availability === 'Available' ? 'text-green-500' : 'text-red-500'
-        ]">
+      <span :class="['font-bold', availabilityColor]">
         {{ availability}}
       </span>
     </td>
@@ -19,7 +15,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'PropertiesTableRow',
   props: {
@@ -52,6 +47,11 @@ export default {
       return (rentedTo === null || rentedTo < new Date())
         ? 'Available'
         : 'Rented out';
+    },
+    availabilityColor() {
+      return this.availability === 'Available'
+        ? 'text-green-500'
+        : 'text-red-500';
     },
   },
   methods: {

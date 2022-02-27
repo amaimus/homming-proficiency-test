@@ -32,15 +32,17 @@
         />
       </th>
       <th class="w-36">
-        <CustomInput
+        <CustomDatePicker
           title="Rented From"
-          disabled
+          v-model="currentFilters.rentedFrom"
+          @input-updated="filtersUpdated('rentedFrom', $event)"
         />
       </th>
       <th class="w-36">
-        <CustomInput
+        <CustomDatePicker
           title="Rented To"
-          disabled
+          v-model="currentFilters.rentedTo"
+          @input-updated="filtersUpdated('rentedTo', $event)"
         />
       </th>
       <th class="w-36">
@@ -58,12 +60,14 @@
 <script>
 import CustomInput from '../shared/CustomInput.vue';
 import CustomSelect from '../shared/CustomSelect.vue';
+import CustomDatePicker from '../shared/CustomDatePicker.vue';
 
 export default {
   name: 'PropertiesFilters',
   components: {
     CustomInput,
     CustomSelect,
+    CustomDatePicker,
   },
   props: {
     propertyTypes: {
@@ -81,6 +85,8 @@ export default {
       userName: null,
       typeId: null,
       name: null,
+      rentedFrom: null,
+      rentedTo: null,
       availability: null,
     },
     availabilityOptions: [
