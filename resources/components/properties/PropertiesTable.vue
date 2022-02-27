@@ -1,22 +1,24 @@
 <template>
-  <div class="mt-5 p-6 shadow-lg max-w-screen-xl">
-    <h1 class="text-2xl mb-3"> Properties List</h1>
-    <table>
-      <PropertiesFilters
-        :propertyTypes="propertyTypes"
-        :filters="filters"
-        @filters-updated="filtersUpdated"
-      />
-      <tbody>
-        <PropertiesTableRow
-          v-for="(property, key) in currentProperties"
-          :key="key"
-          :property="property"
-          :users="users"
+  <div class="mt-5 max-w-screen-xl">
+    <h1 class="text-3xl font-semibold mb-3"> Properties List</h1>
+    <div class="p-6 bg-white rounded-md shadow-lg">
+      <table>
+        <PropertiesFilters
           :propertyTypes="propertyTypes"
+          :filters="filters"
+          @filters-updated="filtersUpdated"
         />
-      </tbody>
-    </table>
+        <tbody>
+          <PropertiesTableRow
+            v-for="(property, key) in currentProperties"
+            :key="key"
+            :property="property"
+            :users="users"
+            :propertyTypes="propertyTypes"
+          />
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
