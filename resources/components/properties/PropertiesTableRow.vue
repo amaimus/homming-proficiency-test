@@ -1,7 +1,7 @@
 <template>
   <tr class="bg-cyan-500 hover:bg-green-50">
     <td class="px-1 py-2"> #{{ property.id }} </td>
-    <td class="px-1 py-2"> {{ propertyOwner }} </td>
+    <td class="px-1 py-2"> {{ propertyUser }} </td>
     <td class="px-1 py-2"> {{ propertyType }} </td>
     <td class="px-1 py-2"> {{ property.name }} </td>
     <td class="px-1 py-2"> {{ getTimeFormat(property.rentedFrom) }} </td>
@@ -37,9 +37,9 @@ export default {
     },
   },
   computed: {
-    propertyOwner() {
-      const propertyOwner = this.users.find((user) => user.id === this.property.userId);
-      return propertyOwner.name;
+    propertyUser() {
+      const propertyUser = this.users.find((user) => user.id === this.property.userId);
+      return propertyUser.name;
     },
     propertyType() {
       const propertyType = this.propertyTypes.find(

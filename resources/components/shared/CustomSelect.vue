@@ -8,6 +8,7 @@
     </label>
     <div class="relative">
       <select
+        v-model="currentValue"
         class="
           block
           appearance-none
@@ -23,13 +24,13 @@
           focus:border-gray-500
         "
         id="grid-state"
-        @change="$emit('input-updated', $event.target.value)"
+        @change="inputUpdated"
       >
         <option selected></option>
         <option
           v-for="(option, key) in options"
           :key=key
-          :value="option.name"
+          :value="option.id"
         >
           {{ option.name }}
         </option>
@@ -66,6 +67,26 @@ export default {
     options: {
       type: Array,
       default: () => [],
+    },
+    value: {
+      type: String,
+      default: '',
+    },
+  },
+  data: () => ({
+    currentValue: null,
+  }),
+  watch: {
+    value(newValue) {
+      const selectedOption = this.options.find((option) => option.id === +newValue);
+      this.currentValue = selectedOption
+        ? this.currentValue = selectedOption.id
+        : null;
+    },
+  },
+  methods: {
+    inputUpdated($event) {
+      this.$emit('input-updated', $event.target.value);
     },
   },
 };

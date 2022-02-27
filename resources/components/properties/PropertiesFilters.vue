@@ -11,9 +11,9 @@
       </th>
       <th>
         <CustomInput
-          title="Owner"
-          v-model="currentFilters.userId"
-          @input-updated="filtersUpdated('userId', $event)"
+          title="User"
+          v-model="currentFilters.userName"
+          @input-updated="filtersUpdated('userName', $event)"
         />
       </th>
       <th class="w-24">
@@ -27,6 +27,7 @@
       <th>
         <CustomInput
           title="Name"
+          v-model="currentFilters.name"
           @input-updated="filtersUpdated('name', $event)"
         />
       </th>
@@ -34,20 +35,19 @@
         <CustomInput
           title="Rented From"
           disabled
-          @input-updated="filtersUpdated('rentedFrom', $event)"
         />
       </th>
       <th class="w-36">
         <CustomInput
           title="Rented To"
           disabled
-         @input-updated="filtersUpdated('rentedTo', $event)"
         />
       </th>
       <th class="w-36">
         <CustomSelect
           title="Availability"
-          :options="[{name: 'Available'}, {name:'Rented Out'}]"
+          v-model="currentFilters.availability"
+          :options="availabilityOptions"
           @input-updated="filtersUpdated('availability', $event)"
         />
       </th>
@@ -82,13 +82,15 @@ export default {
   data: () => ({
     currentFilters: {
       id: null,
-      userId: null,
+      userName: null,
       typeId: null,
       name: null,
-      rentedFrom: null,
-      rentedTo: null,
       availability: null,
     },
+    availabilityOptions: [
+      { id: 1, name: 'Available' },
+      { id: 2, name: 'Rented Out' },
+    ],
   }),
   methods: {
     filtersUpdated(key, value) {
